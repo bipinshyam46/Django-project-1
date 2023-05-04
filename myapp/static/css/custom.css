@@ -1,0 +1,18 @@
+.bgimage{
+    background-image: url('../img/carousel-1.jpg');
+    width: 100%;
+    height: max-content;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.editimg{
+    height: 25px;
+    width: 25px;
+}
+
+td, th,table {
+    border-width: 10px solid white;
+    }
+
+    

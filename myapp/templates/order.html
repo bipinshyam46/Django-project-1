@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid p-0  mb-5 pb-5 bgimage ">
+    <div id="header-carousel">
+            <div class=" d-flex flex-column ">
+            <div class="mt-5 mr-4 ml-4">
+                <div class="row justify-content-center">
+          {% for i in items %}
+                    <form name="sentMessage" id="contactForm" novalidate="novalidate" method="POST" class="m-3 justify-content-center">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <input type="text" class="form-control p-4 mt-3 mb-3 ml-1 mr-1"  value="{{i.description}}" readonly required="required" />
+
+                        </div>
+                        <div class="form-row ">
+                            <div class="col-sm-6 control-group">
+                                <input type="text" class="form-control p-4"  name="item_name" value="{{i.item_name}}" readonly required="required"/>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="col-sm-6 control-group">
+                                <input type="number" class="form-control p-4" name="price" value="{{i.price}}" id="price" readonly required="required"  />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-sm-6 control-group">
+                                <input type="number" class="form-control p-4"  name="quantity" placeholder="Quantity" onkeyup=priceTotal() id="quantity" required="required" data-validation-required-message="Please enter your name" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="col-sm-6 control-group">
+                                <input type="number" class="form-control p-4" name="total_price" id="total" readonly  required="required"  />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <label class="font-weight-bold ">Payment methods</label>
+                        <div class="form-row">
+                            <div class="col-sm-6 control-group">
+                            <a href="#" class="btn btn-info btn-block">Credit/debit card</a>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="col-sm-6 control-group">
+                     
+                     <button type="submit" class="btn btn-warning btn-block" data-toggle="modal" data-target="#codorder1">COD</button>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- codmodal
+    <div class="modal" id="codorder1">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content text-center">
+          <div class="modal-body ">
+            <div class="row"><div class="col "><button type="button" class="close" data-dismiss="modal" style="font-size: 4rem;">&times;</button></div></div>
+            <div class="row ">
+              <div class="col"><h1 class="modal-title font-weight-bold  text-dark">LOGIN CABIN</h1></div>
+            </div>
+            <div class="row mt-1">
+              <div class="col-lg-3"></div>
+              <div class="col-lg-6">
+               <hr class="rounded text-dark hrline3 mb-4" style="display: inline-block;">
+               <i class="material-icons text-dark" style="font-size:3em;display: inline-block;">star</i>
+               <hr class="rounded text-dark hrline3 mb-4" style="display: inline-block;">
+            </div>
+          <div class="col-lg-3"></div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8"><img src="img2.png " class="h-100 w-100 rounded" ></div>
+                <div class="col-lg-2"></div>
+              </div>
+              <div class="row mt-4">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                </div>
+                <div class="col-lg-2"></div>
+              </div>
+              <div class="row mt-4">
+                <div class="col"><button type="button" class="btn text-white" id="modalbtn" style="border: none;" data-dismiss="modal" >&times Close window</button></div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    {% endfor %}      
+                </div>
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/Javascript" src="{% static 'js/custom.js' %}"></script>
+
+{% endblock %}

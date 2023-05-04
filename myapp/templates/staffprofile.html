@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+
+<div class="container-fluid p-0  mb-5 pb-5 bgimage ">
+    <div id="header-carousel">
+        <div >
+            <div class="row d-flex flex-column ">
+              <div class="row">
+                <div class="col-lg-6 mr-3 ml-3 mt-5">
+                <table class="table table-bordered mt-5  ml-3 text-white font-weight-bold ">
+                    <thead>
+                      <tr>
+                        <th scope="col" class="text-center"  colspan="4">Order</th>
+                      </tr>
+                      <tr>
+                        <th class="text-center" >Item name</th>
+                        <th class="text-center" >Date</th>
+                        <th class="text-center" >Quantity</th>
+                        <th class="text-center" >Payment mode</th>
+                        <th class="text-center" >Status</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for i in orders %}
+                      <tr>
+                        <td>{{i.item_name}}</td>
+                        <td>{{i.order_date}}</td>
+                        <td>{{i.quantity}}</td>
+                        <td>{{i.payment_mode}}</td>
+                        <td><a href="changestatus/{{i.id}}" class="btn btn-info">{{i.status}}</a></td>
+                      </tr>
+                      {% endfor %}
+                      
+                    </tbody>
+                  </table>  
+                </div> 
+
+                <div class="col-lg-5 mt-5">
+                  <table class="table table-bordered mt-5  ml-3 text-white font-weight-bold ">
+                      <thead>
+                        <tr>
+                          <th scope="col" class="text-center"  colspan="4">Admin functionalities</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Items</td>
+                          <td><a href="additem" class="btn btn-success ">Add item</a></td>
+                          <td><a href="viewitem" class="btn btn-info">View item</a></td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>  
+                  </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

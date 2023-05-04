@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid p-0  mb-5 pb-5 bgimage ">
+    <div id="header-carousel">
+            <div class=" d-flex flex-column ">
+            <div class="mt-5 mr-4 ml-4">
+            <table class="table text-white table-bordered ont-weight-bold mt-5 ">
+                <tr>
+                    <th>Item name</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Image</th>
+
+                </tr>
+                {% for i in items %}
+                <tr>
+                    <td>{{i.item_name}}</td>
+                    <td>{{i.item_type}}</td>
+                    <td>{{i.price}}</td>
+                    <td>{{i.description}}</td>
+                    <td>{{i.image}}</td>
+                    <td><a href="edititem/{{i.id}}" class="btn btn-info btn-sm">Edit item</a></td>
+                    <td><a href="deleteitem/{{i.id}}" class="btn btn-danger btn-sm">Delete item</a></td>
+
+                </tr>
+                {% endfor %}
+                
+
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

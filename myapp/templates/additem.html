@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+
+
+<div class="container-fluid p-0  mb-5 pb-5 bgimage ">
+    <div id="header-carousel">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 m-5">
+                <div class="contact-form bg-light rounded p-5 m-5">
+                    <div id="success"></div>
+                    <form name="sentMessage" id="contactForm" novalidate="novalidate" method="POST" action="additem" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="col-sm-6 control-group">
+                                <input type="text" class="form-control p-4" id="name" name="item_name" placeholder="Item name" required="required" data-validation-required-message="Please enter the item name" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="col-sm-6 control-group">
+                                <input type="text" class="form-control p-4" id="email" name="item_type" placeholder="Type" required="required" data-validation-required-message="Please enter the product type" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-sm-6 control-group">
+                                <input type="number" class="form-control p-4" id="name" name="price" placeholder="Price" required="required" data-validation-required-message="Please enter the price" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="col-sm-6 control-group text-center">
+                                <input type="file" class="form-control p-4" id="email" name="image" placeholder="Image" required="required" data-validation-required-message="Please upload image" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control p-4" rows="6" id="message" name="description" placeholder="Description" required="required" data-validation-required-message="Please enter description"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary  py-3 px-5 btn-sm" type="submit" id="sendMessageButton">Add item</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Carousel En
+
+{% endblock %}

@@ -28,6 +28,21 @@ def signup(request):
     else:
         return render(request,'signup.html')
 
+def staffsignup(request):
+    if request.method=='POST':
+        name=request.POST['name']
+        username=request.POST['username']
+        phone=request.POST['phone']
+        email=request.POST['email']
+        password=request.POST['password']
+
+
+        UserData.objects.create_user(name=name,username=username,phone=phone,email=email,password=password,is_staff=1)
+        return redirect(home)
+    
+    else:
+        return render(request,'staffsignup.html')
+
 def userprofile(request):
     count=0
     id=request.session['user_id']
@@ -149,7 +164,7 @@ def order(request,id):
 
 
 def staffprofile(request):
-    orders=Order.objects.all()
+    orders=Order.objects.all().order_by('-order_date')
     return render(request,'staffprofile.html',{'orders':orders})
 
 def changestatus(request,id):
@@ -175,9 +190,14 @@ def deleteitem(request,id):
     data.delete()
     return redirect(viewitem)
 
-def schedule_weekly_orders(request, year, week):
-    start_date = date.fromisocalendar(year, week, 1)
-    end_date = start_date + timedelta(days=6)
-    weekly_orders = ScheduleOrder.objects.create()
-    context = {'weekly_orders': weekly_orders}
-    return render(request, 'schedule_weekly_orders.html', context)
+def schedule_order(request):
+    if request.method=='POST':
+        start_date = date.today()
+        end_date = start_date + timedelta(days=6)
+        weekly_orders = ScheduleOrder.objects.create(start_date=start_date,end_date=end_date)
+        context = {'weekly_orders': weekly_orders}
+    else:
+        items=Items.objects.all()
+        return render(request, 'schedule_orders.html',{'items':items})
+
+

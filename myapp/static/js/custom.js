@@ -17,6 +17,10 @@ function outStatus(){
 function completeStatus(){
         document.getElementById("status_value").value="Completed"
     }
-    
 
+
+function priceShow() {
+    var price = document.getElementById('itembox').value;
+    document.getElementById("price").value = price;
+}
 

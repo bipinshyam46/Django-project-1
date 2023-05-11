@@ -6,6 +6,7 @@ from .views import *
 urlpatterns = [
     path('',views.home,name='home'),
     path('signup',views.signup,name='signup'),
+    path('staffsignup',views.staffsignup,name='staffsignup'),
     path('userprofile',views.userprofile,name='userprofile'),
     path('adminprofile',views.adminprofile,name='adminprofile'),
     path('staffprofile',views.staffprofile,name='staffprofile'),
@@ -19,10 +20,10 @@ urlpatterns = [
     path('order/<int:id>',views.order,name='order'),
     path('changestatus/<int:id>',views.changestatus,name='changestatus'),
     path('userorder',views.userorder,name='userorder'),
+    path('schedule',views.schedule_order,name='schedule'),
 
     path('login',views.Login,name='login'),
     path('logout',views.Logout,name='logout'),
-
 
 
 ]
